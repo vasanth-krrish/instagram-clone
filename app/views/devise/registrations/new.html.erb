@@ -1,0 +1,22 @@
+<div id="wrapper">
+  <div class="main-content">
+    <div class="header">
+      <img src="https://i.imgur.com/zqpwkLQ.png" />
+    </div>
+    <div class="l-part">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.text_field :username, placeholder: 'Username *', class: 'input-1', required: true %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email *', class: 'input-1', required: true %>
+        <%= f.text_field :contact, placeholder: 'Contact', class: 'input-1' %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input-2', placeholder: 'Password' %>
+        <%= f.submit "Sign up", class: 'btn' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="sub-content">
+    <div class="s-part">
+      Have an account?<a href="/users/sign_in"> Log in</a>
+    </div>
+  </div>
+</div>

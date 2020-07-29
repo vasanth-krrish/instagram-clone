@@ -1,0 +1,20 @@
+<div id="wrapper">
+  <div class="main-content">
+    <div class="header">
+      <img src="https://i.imgur.com/zqpwkLQ.png" />
+    </div>
+    <div class="l-part">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "email", placeholder: 'Phone number, username or email', class: 'input-1', required: true %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input-2', placeholder: 'Password' %>
+        <%= f.submit "Log in", class: 'btn' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="sub-content">
+    <div class="s-part">
+      Already have an account?<a href="/users/sign_up"> Sign up</a>
+    </div>
+  </div>
+</div>
