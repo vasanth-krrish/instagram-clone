@@ -7,9 +7,45 @@
 
     <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    <nav class="navbar is-fixed-top is-white">
+      <div class="container">
+
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram">
+          </a>
+          <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="field is-grouped">
+              <%= link_to root_path, class: 'navbar-item icon-padding' do %>
+                <figure class="control icon"><i class="fa fa-home fa-2x" aria-hidden="true"></i></figure>
+              <% end %>
+              <%= link_to new_post_path, class: 'navbar-item icon-padding' do %>
+                <figure class="control icon"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></figure>
+              <% end %>
+              <%= link_to '/', class: 'navbar-item icon-padding' do %>
+                <figure class="control icon"><i class="fa fa-user fa-2x" aria-hidden="true"></i></figure>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: 'navbar-item icon-padding' do %>
+                <figure class="control icon"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></figure>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
