@@ -1,0 +1,147 @@
+<%= form_for @user, url: update_profile_path, method: :post do |f| %>
+
+  <div class="columns is-gapless full-height">
+    <div class="column is-3">
+      <div class="card">
+        <div class="card-content">
+          <%= link_to edit_profile_path do %>
+            <p class="control has-text-weight-medium is-size-5">Edit Profile</p>
+          <% end %><br>
+          <%= link_to edit_profile_path do %>
+            <p class="control is-size-6">Change Password</p>
+          <% end %><br>
+        </div>
+      </div>
+    </div>
+    <div class="column is-9">
+      <div class="card">
+        <div class="card-content">
+
+          <% if @user.avatar.attached? %>
+            <div class="columns">
+              <div class="column control has-text-right">
+                <figure class="image is-128x128 has-image-centered">
+                  <%= image_tag @user.avatar %>
+                </figure>
+              </div>
+            </div>
+          <% else %>
+            <br>
+          <% end %>
+
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Name</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+            </div>
+            <div class="column is-8">
+              <small>Help people discover your account by using the name you're known by: either your full name, nickname, or business name.</small>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Username</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.text_field :username, autofocus: true, autocomplete: "username", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Website</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.text_field :website, autofocus: true, autocomplete: "username", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Dp</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.file_field :avatar, autofocus: true, autocomplete: "username", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Bio</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.text_area :bio, autofocus: true, autocomplete: "bio", class: 'textarea', rows: 3 %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+            </div>
+            <div class="column is-8">
+              <p>Personal Information<br>
+              <small>Provide your personal information, even if the account is used for a business, a pet or something else. This won't be a part of your public profile.</small></p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Email</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Phone number</strong>
+            </div>
+            <div class="column is-8">
+              <%= f.text_field :contact, autofocus: true, autocomplete: "contact", class: 'input' %>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right">
+              <strong>Gender</strong>
+            </div>
+            <div class="column is-8">
+              <div class="select">
+                <%= f.select :gender, [['Select gender', nil], 'Male', 'Female', 'Others'],autofocus: true, autocomplete: "username" %>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-4 control has-text-right"></div>
+            <div class="column is-8">
+              <div class="columns">
+                <div class="column">
+                  <%= f.submit 'Update', class: 'button is-info' %>
+                </div>
+                <div class="column control has-text-right">
+                  <%= link_to user_registration_path, method: :delete, data: { confirm: "Are you sure want to cancel your account?" }, class: "button is-danger" do %>
+                    Cancel my account
+                  <% end %><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<style media="screen">
+
+  a {
+    color: black;
+  }
+  .has-image-centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card {
+    height: 100%;
+  }
+</style>

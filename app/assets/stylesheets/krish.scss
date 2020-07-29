@@ -1,0 +1,25 @@
+
+@import "bulma";
+
+body {
+  background-color: #FAFAFA;
+  height: 100vh;
+}
+
+.icon-padding {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.image {
+  border-radius: 50%;
+  border: 1px solid black;
+  img {
+    border-radius: 50%;
+  }
+}
+
+hr {
+  height: 1px;
+  background-color: black;
+}
