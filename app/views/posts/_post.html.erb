@@ -1,0 +1,38 @@
+<div class="columns">
+  <div class="column is-6 is-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <%= image_tag user.avatar %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-6">
+              <%= link_to profile_path(user.username) do %>
+                <%= user.name %>
+              <% end %>
+            </p>
+            <p class="subtitle is-6">@<%= user.username %></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-image">
+        <figure class="is-4by3">
+          <%= image_tag post.image, style: 'width:100%;' %>
+        </figure>
+      </div>
+      <div class="card-content">
+        <strong>
+          <%= link_to profile_path(user.username) do %>
+            <%= user.username %>
+          <% end %>
+        </strong>&nbsp;
+        <%= post.caption %><br>
+        <hr>
+        <p><small><%= time_ago_in_words(post.created_at).upcase %> AGO</small></p>
+      </div>
+    </div>
+  </div>
+</div>

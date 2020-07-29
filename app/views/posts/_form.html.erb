@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <div class="columns">
+    <div class="column">
+      <%= form.file_field :image, autofocus: true, autocomplete: "name", class: 'input'%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_area :caption %>
+  <div class="columns">
+    <div class="column">
+      <%= form.text_area :caption, autofocus: true, autocomplete: "name", class: 'textarea' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Upload', class: 'button is-info' %>
   </div>
 <% end %>

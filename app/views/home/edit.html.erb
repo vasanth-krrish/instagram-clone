@@ -7,7 +7,7 @@
           <%= link_to edit_profile_path do %>
             <p class="control has-text-weight-medium is-size-5">Edit Profile</p>
           <% end %><br>
-          <%= link_to edit_profile_path do %>
+          <%= link_to edit_password_path do %>
             <p class="control is-size-6">Change Password</p>
           <% end %><br>
         </div>
@@ -118,7 +118,7 @@
                   <%= f.submit 'Update', class: 'button is-info' %>
                 </div>
                 <div class="column control has-text-right">
-                  <%= link_to user_registration_path, method: :delete, data: { confirm: "Are you sure want to cancel your account?" }, class: "button is-danger" do %>
+                  <%= link_to delete_user_path, method: :delete, data: { confirm: "Are you sure want to cancel your account?" }, class: "button is-danger" do %>
                     Cancel my account
                   <% end %><br><br>
                 </div>
@@ -131,17 +131,3 @@
   </div>
 
 <% end %>
-
-<style media="screen">
-
-  a {
-    color: black;
-  }
-  .has-image-centered {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .card {
-    height: 100%;
-  }
-</style>
