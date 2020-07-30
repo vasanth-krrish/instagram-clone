@@ -1,0 +1,2 @@
+class Uploadable < ApplicationRecord
+end

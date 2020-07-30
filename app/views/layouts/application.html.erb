@@ -9,6 +9,38 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+    <style media="screen">
+      /* We don't need checkbox to be displayed in order for it to work */
+      .toggler {
+        display: none;
+      }
+
+      /* Below are all the functionalities */
+
+      /* Hamburger changes to X when toggler is checked */
+      .navbar .toggler:checked + .navbar-brand .burger span:nth-child(1) {
+        -webkit-transform: translateY(5px) rotate(45deg);
+        transform: translateY(5px) rotate(45deg);
+      }
+      .navbar .toggler:checked + .navbar-brand .burger span:nth-child(2) {
+        opacity: 0;
+      }
+      .navbar .toggler:checked + .navbar-brand .burger span:nth-child(3) {
+        -webkit-transform: translateY(-5px) rotate(-45deg);
+        transform: translateY(-5px) rotate(-45deg);
+      }
+
+      /*  Displays menu when toggler is checked only on mobile/tablet */
+      @media screen and (max-width: 1024px) {
+        .navbar .toggler:checked ~ .navbar-menu {
+          display: block;
+        }
+        /* We don't want menu to be displayed on mobile by default */
+        .navbar-menu {
+          display: none;
+        }
+      }
+    </style>
   </head>
 
   <body>

@@ -4,6 +4,13 @@ class HomeController < ApplicationController
 
   def profile
     @user = User.find_by(username: params[:id])
+    @posts = @user.posts.order("created_at DESC")
+    @followings = Following.where(user_id: current_user.id).pluck('following')
+  end
+
+  def accounts
+    @accounts = User.all
+    @followings = Following.where(user_id: current_user.id).pluck('following')
   end
 
   def edit

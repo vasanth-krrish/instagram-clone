@@ -1,0 +1,77 @@
+<div class="columns">
+  <div class="column is-8">
+    <div class="columns">
+      <div class="column">
+        <p class="control title is-4">Who to follow?</p>
+      </div>
+    </div>
+    <div class="columns is-multiline is-mobile">
+      <% @accounts.each do |a| %>
+        <% unless a == current_user %>
+          <% unless a.id.in?(@followings) %>
+            <div class="column is-6">
+              <%= link_to profile_path(a.username) do %>
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="media">
+                        <div class="media-left">
+                          <figure class="image is-48x48">
+                            <% if Allowed.count == 0 && !a.avatar_shot.nil? && a.avatar_shot!="" %>
+                              <img src="<%= a.avatar_shot %>">
+                            <% elsif Allowed.count!=0 && a.avatar.attached? %>
+                              <%= image_tag a.avatar %>
+                            <% else %>
+                              <img src="https://bulma.io/images/placeholders/128x128.png">
+                            <% end %>
+                          </figure>
+                        </div>
+                        <div class="media-content">
+                          <p class="control"><strong><%= a.name %></strong></p>
+                          <p class="control"><small><%= a.username %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="column is-4">
+    <div class="panel">
+      <p class="panel-heading">Following List</p>
+      <% current_user.followings.each do |u| %>
+        <% user = User.find(u.following) %>
+        <%= link_to profile_path(user.username) do %>
+        <div class="panel-block">
+          <article class="media">
+            <div class="media-left">
+              <figure class="media-left">
+                <p class="image is-48x48">
+                  <% if Allowed.count == 0 && !user.avatar_shot.nil? && user.avatar_shot!="" %>
+                    <img src="<%= user.avatar_shot %>">
+                  <% elsif Allowed.count!=0 && user.avatar.attached? %>
+                    <%= image_tag user.avatar %>
+                  <% else %>
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  <% end %>
+                </p>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= user.name %></strong><br/>
+                  <small>@<%= user.username %></small>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

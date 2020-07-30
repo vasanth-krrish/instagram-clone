@@ -17,16 +17,30 @@
       <div class="card">
         <div class="card-content">
 
-          <% if @user.avatar.attached? %>
-            <div class="columns">
-              <div class="column control has-text-right">
-                <figure class="image is-128x128 has-image-centered">
-                  <%= image_tag @user.avatar %>
-                </figure>
+          <% if Allowed.count == 0 %>
+            <% if !current_user.avatar_shot.nil? && current_user.avatar_shot!="" %>
+              <div class="columns">
+                <div class="column control has-text-right">
+                  <figure class="image is-128x128 has-image-centered">
+                    <img src="<%= current_user.avatar_shot %>" alt="">
+                  </figure>
+                </div>
               </div>
-            </div>
+            <% else %>
+                <br>
+            <% end %>
           <% else %>
-            <br>
+            <% if @user.avatar.attached? %>
+              <div class="columns">
+                <div class="column control has-text-right">
+                  <figure class="image is-128x128 has-image-centered">
+                    <%= image_tag @user.avatar %>
+                  </figure>
+                </div>
+              </div>
+            <% else %>
+              <br>
+            <% end %>
           <% end %>
 
           <div class="columns">
@@ -60,14 +74,27 @@
               <%= f.text_field :website, autofocus: true, autocomplete: "username", class: 'input' %>
             </div>
           </div>
-          <div class="columns">
-            <div class="column is-4 control has-text-right">
-              <strong>Dp</strong>
+
+          <% if Allowed.count == 0 %>
+            <div class="columns">
+              <div class="column is-4 control has-text-right">
+                <strong>Dp</strong>
+              </div>
+              <div class="column is-8">
+                <%= f.text_field :avatar_shot, autofocus: true, autocomplete: "username", class: 'input' %>
+              </div>
             </div>
-            <div class="column is-8">
-              <%= f.file_field :avatar, autofocus: true, autocomplete: "username", class: 'input' %>
+          <% else %>
+            <div class="columns">
+              <div class="column is-4 control has-text-right">
+                <strong>Dp</strong>
+              </div>
+              <div class="column is-8">
+                <%= f.file_field :avatar, autofocus: true, autocomplete: "username", class: 'input' %>
+              </div>
             </div>
-          </div>
+          <% end %>
+
           <div class="columns">
             <div class="column is-4 control has-text-right">
               <strong>Bio</strong>

@@ -6,7 +6,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    followings = Following.where(user_id: current_user.id).pluck('following')
+    users = followings << current_user.id
+    @posts = Post.where(user_id: users).order("created_at DESC")
   end
 
   # GET /posts/1
@@ -64,6 +66,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:id])
+    @post.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render layout: false }
+    end
+  end
+
+  def unlike
+    @post = Post.find(params[:id])
+    @post.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render layout: false }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -72,6 +92,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:user_id, :caption, :image)
+      params.require(:post).permit(:user_id, :caption, :image, :image_shot)
     end
 end

@@ -11,12 +11,35 @@
     </div>
   <% end %>
 
+  <% if Allowed.count == 0 %>
+    <div class="columns">
+      <div class="column">
+        <label class="label">Drop image url here</label>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <%= form.text_field :image_shot, autofocus: true, autocomplete: "username", class: 'input' %>
+      </div>
+    </div>
+  <% else %>
+    <div class="columns">
+      <div class="column">
+        <label class="label">Drop image here</label>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <%= form.file_field :image, autofocus: true, autocomplete: "username", class: 'input' %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="columns">
     <div class="column">
-      <%= form.file_field :image, autofocus: true, autocomplete: "name", class: 'input'%>
+      <label class="label">Caption</label>
     </div>
   </div>
-
   <div class="columns">
     <div class="column">
       <%= form.text_area :caption, autofocus: true, autocomplete: "name", class: 'textarea' %>
