@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :posts
   has_many :followings
   acts_as_voter
+  validates :username, uniqueness: true
 end
